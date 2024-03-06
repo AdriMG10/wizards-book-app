@@ -1,20 +1,54 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Wizard's Book</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="contacto">
+        <ion-icon name="call"></ion-icon>
+        <ion-label>Contacto</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Wizard's Book</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <h1>Wizard's Book</h1>
+    <ion-list>
+      <ion-item
+        *ngFor="let documentTarea of arrayColeccionTareas"
+        (click)="selecTarea(documentTarea.id, documentTarea.tarea)"
+      >
+        <ion-grid>
+          <ion-row>
+            <h2>{{documentTarea.tarea.titulo}}</h2>
+          </ion-row>
+          <ion-row>
+            <p>{{documentTarea.tarea.descripcion}}</p>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div id="container2">
+    <ion-fab slot="fixed" vertical="bottom" horizontal="center">
+      <ion-fab-button>
+        <ion-icon name="add" [routerLink]="['/detalle']"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
 </ion-content>
