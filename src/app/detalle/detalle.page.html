@@ -13,20 +13,21 @@
 
   <!-- <p>{{ id }}</p> -->
   <div id="container">
-    <h2>Título</h2>
+    <h2>Carta</h2>
     <ion-input [(ngModel)]="document.data.titulo"></ion-input>
 
-    <h2>Descripción</h2>
+    <h2>Tipo</h2>
+    <ion-input [(ngModel)]="document.data.tipo"></ion-input>
+
+    <h2>Texto Reglas</h2>
     <ion-input [(ngModel)]="document.data.descripcion"></ion-input>
 
-    <ion-button [routerLink]="['/home']" (click)="clickBotonBorrar()"
-      >Borrar tarea</ion-button
-    >
+    <ion-icon name="trash" (click)="clickBotonBorrar()"></ion-icon>
     <ion-button [routerLink]="['/home']" (click)="clickBotonModificar()"
-      >Modificar tarea</ion-button
+      >Modificar carta</ion-button
     >
     <ion-button [routerLink]="['/home']" (click)="clickBotonInsertar()"
-      >Añadir tarea</ion-button
+      >Añadir carta</ion-button
     >
     <ion-button (click)="clickBotonSeleccionarImagen()"
       >Seleccionar imagen</ion-button

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Tarea } from '../tarea';
 import { FirestoreService } from '../firestore.service';
 import { Router } from '@angular/router';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,11 @@ export class HomePage {
 
   idTareaSelec: string = '';
 
-  constructor(private firestoreService: FirestoreService, private router: Router) {
+  constructor(
+    private firestoreService: FirestoreService,
+    private router: Router,
+    private SocialSharing: SocialSharing
+  ) {
     this.obtenerListaTareas();
   }
 
@@ -41,5 +46,20 @@ export class HomePage {
     this.tareaEditando = tareaSelec;
     this.idTareaSelec = idTarea;
     this.router.navigate(['detalle', this.idTareaSelec]);
+  }
+
+  share() {
+    this.SocialSharing.share(
+      "Estoy usando Wizard's Book",
+      "Wizard's Book",
+      'Archivo opcional',
+      'https://www.wizardsbook.com'
+    )
+      .then(() => {
+        console.log('Share exitoso');
+      })
+      .catch((error) => {
+        console.error('Error share', error);
+      });
   }
 }
